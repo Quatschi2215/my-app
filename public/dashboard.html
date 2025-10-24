@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <style>
+        .notification {
+            padding: 10px;
+            margin: 10px;
+            border: 1px solid #888;
+            background-color: #f8d7da;
+            position: relative;
+        }
+        .close-btn {
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Dashboard</h1>
+    <button id="addNotification">Müll runter</button>
+
+    <div id="notifications"></div>
+
+    <script>
+        const addBtn = document.getElementById('addNotification');
+        const notificationsDiv = document.getElementById('notifications');
+
+        addBtn.addEventListener('click', () => {
+            const notification = document.createElement('div');
+            notification.classList.add('notification');
+            notification.innerHTML = `
+                Müll runter
+                <span class="close-btn">&times;</span>
+            `;
+
+            // Entfernen beim Klick auf X
+            notification.querySelector('.close-btn').addEventListener('click', () => {
+                notificationsDiv.removeChild(notification);
+            });
+
+            notificationsDiv.appendChild(notification);
+        });
+    </script>
+</body>
+</html>
